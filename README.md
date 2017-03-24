@@ -1,3 +1,13 @@
+## Enhanced features for the fork
+
+- `gr` will sort all the tagged directories while running a command by default. If the tagged directories has dependencies, it will make a mistake. The enhancement provides a configuration to tell `gr` to sort or not to sort.
+  Using `gr config set sort false` to disable sort.
+  Using `gr config set sort true` to enable sort.
+
+
+------
+
+
 ## Features
 
 - Tag all the things! `gr @work foo` will run the command `foo` in all the paths tagged `@work`.
@@ -45,9 +55,9 @@ Outputs:
     ## glue2
      M lib/runner/package-commonjs/index.js
      M index.js
-
+    
     in ~/mnt/microee
-
+    
     ## master
 
 `gr` doesn't do any command rewriting, or introduce any new commands - I like `git` as it is.
@@ -112,14 +122,14 @@ Now, when you type `gr <tab>`, you'll see the list tags you've created. If you n
 
 Some examples:
 
-COMMAND                                                         | TASK
--------                                                         | ----
-`gr @work git fetch` and then `gr @work status`                 | Update all my work repos. This fetches the newest information from the remote, and then prints a one-line-at-a-time summary.
-`gr @work git diff` or `gr @work git diff --cached`             | See diffs
-`gr @work jshint . --exclude=**/node_modules`                   | Run `jshint`
-`gr @write make`                                                | Rebuild all my writing via `make`
-`gr @work npm ls`                                               | List install npm modules
-`gr @work git --no-pager log --decorate --graph --oneline -n 3` | Print a graph-like log
+| COMMAND                                  | TASK                                     |
+| ---------------------------------------- | ---------------------------------------- |
+| `gr @work git fetch` and then `gr @work status` | Update all my work repos. This fetches the newest information from the remote, and then prints a one-line-at-a-time summary. |
+| `gr @work git diff` or `gr @work git diff --cached` | See diffs                                |
+| `gr @work jshint . --exclude=**/node_modules` | Run `jshint`                             |
+| `gr @write make`                         | Rebuild all my writing via `make`        |
+| `gr @work npm ls`                        | List install npm modules                 |
+| `gr @work git --no-pager log --decorate --graph --oneline -n 3` | Print a graph-like log                   |
 
 
 Of course, I don't actually type these out; I'm using `zsh` aliases instead. `grd` is for diff, `grdc` is for `diff --cached`; `grl` is for the log. For example, in `.zshrc`:
@@ -207,24 +217,24 @@ Tags can also be specified more explicitly. For example `gr -t work -t play` is 
       rm <t>          Remove a tag from the current directory
       add <t> <path>  Add a tag to <path>
       rm <t> <path>   Remove a tag from <path>
-
+    
     gr tag discover <paths> Auto-discover git paths under  the list of <paths>
                            (If omitted, <paths> defaults to ~/)
-
+    
     gr tag list         List all known repositories and their tags
-
+    
     gr list        List all known repositories and their tags
-
+    
     gr status       Displays the (git) status of the selected directories.
     gr status -v    Runs "git status -sb" for a more verbose status.
-
+    
     gr config ..
       get <k>       Get a config key (can also be a path, e.g. "tags.foo")
       set <k> <v>   Set a config key (overwrites existing value)
       add <k> <v>   Add a value to a config key (appends rather than overwriting)
       rm <k> <v>    Remove a value from a config key (if it exists)
       list          List all configuration (default action)
-
+    
     gr help        Show this help
     gr version     Version info
 

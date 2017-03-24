@@ -277,13 +277,15 @@ Gr.prototype.addAll = function() {
 
 Gr.prototype.dirUnique = function() {
   var last;
-  this.directories = this.directories.filter(Boolean)
-                  .sort()
-                  .filter(function(key) {
-                    var isDuplicate = (key == last);
-                    last = key;
-                    return !isDuplicate;
-                  });
+  this.directories = this.directories.filter(Boolean);
+  if (!this.config || !this.config.items || (!this.config.items.sort || (Array.isArray(this.config.items.sort) && this.config.items.sort[0].toLowerCase() !== "false"))) {
+    this.directories = this.directories.sort();
+  }
+  this.directories = this.directories.filter(function(key) {
+                       var isDuplicate = (key == last);
+                       last = key;
+                       return !isDuplicate;
+                     });
 };
 
 Gr.prototype.dirExist = function() {
