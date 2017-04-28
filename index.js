@@ -276,12 +276,11 @@ Gr.prototype.addAll = function() {
 };
 
 Gr.prototype.dirUnique = function() {
-  var last;
   this.directories = this.directories.filter(Boolean);
-  if (!this.config || !this.config.items || (!this.config.items.sort || (Array.isArray(this.config.items.sort) && this.config.items.sort[0].toLowerCase() !== "false"))) {
-    this.directories = this.directories.sort();
+  if (this.config && this.config.items && this.config.items.sort && this.config.items.sort.toLowerCase() == "true") {
+  	this.directories = this.directories.sort();
   }
-  this.directories = [...new Set(this.directories)];
+  this.directories = [... new Set(this.directories)]; 
 };
 
 Gr.prototype.dirExist = function() {
