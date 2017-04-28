@@ -281,11 +281,7 @@ Gr.prototype.dirUnique = function() {
   if (!this.config || !this.config.items || (!this.config.items.sort || (Array.isArray(this.config.items.sort) && this.config.items.sort[0].toLowerCase() !== "false"))) {
     this.directories = this.directories.sort();
   }
-  this.directories = this.directories.filter(function(key) {
-                       var isDuplicate = (key == last);
-                       last = key;
-                       return !isDuplicate;
-                     });
+  this.directories = [...new Set(this.directories)];
 };
 
 Gr.prototype.dirExist = function() {
