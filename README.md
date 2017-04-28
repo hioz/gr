@@ -1,8 +1,8 @@
 ## Enhanced features for the fork
 
 - `gr` will sort all the tagged directories while running a command by default. If the tagged directories have dependencies, it will make a mistake. The enhancements disable sorting behavior and provides a configuration to tell `gr` to sort or not to sort.
-  Using `gr config set sort true` to enable sort behavior.
-  Using `gr config set sort false` or `gr config rm sort` to disable sort behavior.
+  - Using `gr config set sort true` to enable sort behavior.
+  - Using `gr config set sort false` or `gr config rm sort` to disable sort behavior.
 
 
 ------
